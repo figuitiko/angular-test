@@ -3,16 +3,29 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LibroAddComponent } from './libro-add/libro-add.component';
+import { LibroGetComponent } from './libro-get/libro-get.component';
+import { LibroEditComponent } from './libro-edit/libro-edit.component';
+import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {LibrosService} from './libros.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LibroAddComponent,
+    LibroGetComponent,
+    LibroEditComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SlimLoadingBarModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LibrosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

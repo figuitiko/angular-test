@@ -1,0 +1,69 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Nombre del Libro</label>
+        <input type="text" class="form-control"
+               formControlName="LibroName"
+               #LibroName />
+      </div>
+      <div *ngIf="angForm.controls['LibroName'].invalid && (angForm.controls['LibroName'].dirty || angForm.controls['LibroName'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroName'].errors.required">
+          El nombre del Libro es requerido
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Editorial del Libro </label>
+        <input type="text" class="form-control"
+               formControlName="LibroEditorial"
+               #LibroEditorial />
+      </div>
+      <div *ngIf="angForm.controls['LibroEditorial'].invalid && (angForm.controls['LibroEditorial'].dirty || angForm.controls['LibroEditorial'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroEditorial'].errors.required">
+          La Editorial del Libro es Requerida
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Autor del Libro</label>
+        <input type="text" class="form-control"
+               formControlName="LibroAuthor"
+               #LibroAuthor
+        />
+      </div>
+      <div *ngIf="angForm.controls['LibroAuthor'].invalid && (angForm.controls['LibroAuthor'].dirty || angForm.controls['LibroAuthor'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroAuthor'].errors.required">
+          El autor es Requerido
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Idioma del Libro</label>
+        <input type="text" class="form-control"
+               formControlName="LibroIdiom"
+               #LibroIdiom
+        />
+      </div>
+      <div *ngIf="angForm.controls['LibroIdiom'].invalid && (angForm.controls['LibroIdiom'].dirty || angForm.controls['LibroIdiom'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroIdiom'].errors.required">
+         Idioma del Libro es Requerido
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Idioma del Libro</label>
+        <textarea class="form-control" rows = 7 cols = "5"
+                  formControlName="LibroDescription"
+                  #LibroDescription></textarea>
+      </div>
+      <div *ngIf="angForm.controls['LibroDescription'].invalid && (angForm.controls['LibroDescription'].dirty || angForm.controls['LibroDescription'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroDescription'].errors.required">
+          La Descripcion es Requerida
+        </div>
+      </div>
+      <div class="form-group">
+        <button (click) = "addBook(LibroName.value, LibroEditorial.value, LibroAuthor.value, LibroIdiom.value, LibroDescription.value)" type="submit" class="btn btn-primary"
+                [disabled]="angForm.pristine || angForm.invalid" >
+          Create Product
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
