@@ -1,1 +1,26 @@
-<p>libro-get works!</p>
+<div class="table-responsive-sm">
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Nombre del Libro</th>
+    <th scope="col">Editorial del Libron</th>
+    <th  scope="col">Autor del Libro</th>
+    <th scope="col">Idioma del Libro</th>
+    <th scope="col">Descripcion del Libro</th>
+    <th scope="col" >Actions</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let libro of libros">
+    <td scope="row">{{ libro.LibroName }}</td>
+    <td>{{ libro.LibroEditorial }}</td>
+    <td>{{ libro.LibroIdiom }}</td>
+    <td>{{ libro.LibroAuthor }}</td>
+    <td>{{ libro.LibroDescription }}</td>
+    <td><a [routerLink]="['/libro/edit', libro._id]" class="btn btn-primary">Edit</a></td>
+    <td><a (click) = "deleteLibro(libro._id)"class="btn btn-danger">Delete</a></td>
+  </tr>
+  </tbody>
+</table>
+</div>

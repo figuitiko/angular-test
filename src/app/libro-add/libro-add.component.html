@@ -48,7 +48,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4">Idioma del Libro</label>
+        <label class="col-md-4">Descripcion del Libro</label>
         <textarea class="form-control" rows = 7 cols = "5"
                   formControlName="LibroDescription"
                   #LibroDescription></textarea>
@@ -61,7 +61,7 @@
       <div class="form-group">
         <button (click) = "addBook(LibroName.value, LibroEditorial.value, LibroAuthor.value, LibroIdiom.value, LibroDescription.value)" type="submit" class="btn btn-primary"
                 [disabled]="angForm.pristine || angForm.invalid" >
-          Create Product
+          Agregar Libro
         </button>
       </div>
     </form>

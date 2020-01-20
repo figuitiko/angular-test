@@ -10,6 +10,9 @@ import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {LibrosService} from './libros.service';
+import { AuthorAddComponent } from './author-add/author-add.component';
+import { AuthorEditComponent } from './author-edit/author-edit.component';
+import { AuthorGetComponent } from './author-get/author-get.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,9 @@ import {LibrosService} from './libros.service';
     LibroAddComponent,
     LibroGetComponent,
     LibroEditComponent,
+    AuthorAddComponent,
+    AuthorEditComponent,
+    AuthorGetComponent,
   ],
   imports: [
     BrowserModule,

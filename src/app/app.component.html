@@ -1,7 +1,7 @@
 <ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
 <nav class="navbar navbar-expand-sm bg-light">
   <div class="container-fluid">
-    <ul class="navbar-nav">
+    <ul class="nav nav-tabs">
       <li class="nav-item">
         <a routerLink="libro/create" class="nav-link" routerLinkActive="active">
          Agregar Libro
@@ -12,10 +12,25 @@
           Libros
         </a>
       </li>
+      <li class="nav-item">
+        <a routerLink="author/create" class="nav-link" routerLinkActive="active">
+          Agregar un autor
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="authors" class="nav-link" routerLinkActive="active">
+          Autores
+        </a>
+      </li>
+
     </ul>
   </div>
 </nav>
 
+
 <div class="container">
-  <router-outlet></router-outlet>
+
+      <router-outlet></router-outlet>
+
+
 </div>

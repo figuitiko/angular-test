@@ -1,1 +1,75 @@
-<p>libro-edit works!</p>
+<!-- libro-edit.component.html -->
+
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      <div class="form-group">
+        <label class="col-md-4">Nombre del Libro</label>
+        <input type="text" class="form-control"
+               formControlName="LibroName"
+               #LibroName
+               [(ngModel)] = "libro.LibroName"/>
+      </div>
+      <div *ngIf="angForm.controls['LibroName'].invalid && (angForm.controls['LibroName'].dirty || angForm.controls['LibroName'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroName'].errors.required">
+          El nombre del Libro es Requerido
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Editorial</label>
+        <input type="text" class="form-control"
+               formControlName="LibroEditorial"
+               #LibroEditorial
+               [(ngModel)] = "libro.LibroEditorial"/>
+      </div>
+      <div *ngIf="angForm.controls['LibroEditorial'].invalid && (angForm.controls['LibroEditorial'].dirty || angForm.controls['LibroEditorial'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroEditorial'].errors.required">
+         La Editorial es Requerida
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Idioma</label>
+        <input type="text" class="form-control"
+               formControlName="LibroIdiom"
+               #LibroIdiom
+               [(ngModel)] = "libro.LibroIdiom"/>
+      </div>
+      <div *ngIf="angForm.controls['LibroIdiom'].invalid && (angForm.controls['LibroIdiom'].dirty || angForm.controls['LibroIdiom'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroIdiom'].errors.required">
+          El Idioma es Requerido
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4">Autor</label>
+        <input type="text" class="form-control"
+               formControlName="LibroAuthor"
+               #LibroAuthor
+               [(ngModel)] = "libro.LibroAuthor"/>
+      </div>
+      <div *ngIf="angForm.controls['LibroAuthor'].invalid && (angForm.controls['LibroAuthor'].dirty || angForm.controls['LibroAuthor'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroAuthor'].errors.required">
+          El Autor es  Requerido
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Libro Descripcion </label>
+        <textarea class="form-control" rows = 7 cols = "5"
+                  formControlName="LibroDescription"
+                  #LibroDescription [(ngModel)] = "libro.LibroDescription"></textarea>
+      </div>
+      <div *ngIf="angForm.controls['LibroDescription'].invalid && (angForm.controls['LibroDescription'].dirty || angForm.controls['LibroDescription'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['LibroDescription'].errors.required">
+          Product Description is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button (click) = "updateLibro(LibroName.value, LibroEditorial.value, LibroIdiom.value, LibroAuthor.value, LibroDescription.value)" type="submit" class="btn btn-primary"
+                [disabled]="angForm.invalid" >
+          Actualizar datos del Libro
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

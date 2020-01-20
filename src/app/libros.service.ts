@@ -21,4 +21,33 @@ export class LibrosService {
     this.http.post(`${this.uri}/add`, obj)
       .subscribe(res => console.log('Done'));
   }
+  getLibros() {
+    return this
+      .http
+      .get(`${this.uri}`);
+  }
+  editLibro(id) {
+    return this
+      .http
+      .get(`${this.uri}/edit/${id}`);
+  }
+  updateLibro(LibroName, LibroEditorial, LibroIdiom, LibroAuthor, LibroDescription, id) {
+    const obj = {
+      LibroName,
+      LibroEditorial,
+      LibroIdiom,
+      LibroAuthor,
+      LibroDescription
+
+    };
+    this
+      .http
+      .post(`${this.uri}/update/${id}`, obj)
+      .subscribe(res => console.log('Done'));
+  }
+  deleteLibro(id) {
+    return this
+      .http
+      .get(`${this.uri}/delete/${id}`);
+  }
 }
