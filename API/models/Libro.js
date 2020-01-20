@@ -13,15 +13,11 @@ let Libro = new Schema({
   LibroIdiom: {
     type: String
   },
-  LibroAuthor: {
-    type: String
-  },
   LibroDescription: {
     type: String
   },
-  author: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Author'
+  LibroAuthor: {
+    type: String
   }
 },{
   collection: 'Libro'

@@ -13,6 +13,7 @@ import {LibrosService} from './libros.service';
 import { AuthorAddComponent } from './author-add/author-add.component';
 import { AuthorEditComponent } from './author-edit/author-edit.component';
 import { AuthorGetComponent } from './author-get/author-get.component';
+import {AuthorsService} from './authors.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { AuthorGetComponent } from './author-get/author-get.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [LibrosService],
+  providers: [LibrosService, AuthorsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

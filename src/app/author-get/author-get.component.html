@@ -1,1 +1,19 @@
-<p>author-get works!</p>
+
+<div class="col-md-12">
+  <div class="row">
+  <div class="col-md-2">Nombre del Autor</div>
+  <div class="col-md-2">Nacionlidad</div>
+  <div class="col-md-2">fecha de nacimiento</div>
+    <div class="col-md-6 text-center my-actions">Acciones</div>
+
+  </div>
+  <div class="clearfix"></div>
+  <div class="row" *ngFor="let author of authors; let i = index">
+    <div class="col-md-2">{{author.AuthorName}}</div>
+    <div class="col-md-2">{{author.AuthorNationality}}</div>
+    <div class="col-md-2">{{author.AuthorBirthDate}}</div>
+    <div class="col-md-3 text-center"><a [routerLink]="['/author/edit', author._id]" class="btn btn-primary">Edit</a></div>
+    <div class="col-md-3 text-center" > <a (click) = "deleteAuthor(author._id, i)"class="btn btn-danger">Delete</a></div>
+
+  </div>
+</div>

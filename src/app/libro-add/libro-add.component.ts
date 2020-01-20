@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import {LibrosService} from '../libros.service';
+import {Router} from '@angular/router';
+import Author from '../Author';
+import {AuthorsService} from '../authors.service';
 
 @Component({
   selector: 'app-libro-add',
@@ -13,10 +16,11 @@ export class LibroAddComponent implements OnInit {
   LibroEditorial: string;
   LibroIdiom: string;
   LibroDescription: string;
-  LibroAuthor
+  LibroAuthorId: number;
   angForm: FormGroup;
+  authors: Author[];
 
-  constructor(private fb: FormBuilder, private ls: LibrosService) {
+  constructor(private fb: FormBuilder, private ls: LibrosService, private router: Router, private as: AuthorsService) {
     this.createForm();
   }
 
@@ -25,15 +29,21 @@ export class LibroAddComponent implements OnInit {
       LibroName: ['', Validators.required ],
       LibroEditorial: ['', Validators.required ],
       LibroIdiom: ['', Validators.required ],
-      LibroAuthor: ['', Validators.required],
-      LibroDescription: ['', Validators.required ]
+      LibroDescription: ['', Validators.required ],
     });
   }
   addBook(LibroName, LibroEditorial, LibroIdiom, LibroDescription, LibroAuthor) {
+
     this.ls.addLibro(LibroName, LibroEditorial, LibroIdiom, LibroDescription, LibroAuthor);
+   // this.router.navigate(['libros']);
   }
 
   ngOnInit() {
+    this.as
+      .getAuthors()
+      .subscribe((data: Author[]) => {
+        this.authors = data;
+      });
   }
 
 }

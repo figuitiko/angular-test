@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Libro from '../Libro';
 import {LibrosService} from '../libros.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-libro-get',
@@ -10,7 +11,7 @@ import {LibrosService} from '../libros.service';
 export class LibroGetComponent implements OnInit {
 
   libros: Libro[];
-  constructor(private ls: LibrosService) { }
+  constructor(private ls: LibrosService, private router: Router) { }
 
   ngOnInit() {
     this.ls
@@ -19,9 +20,10 @@ export class LibroGetComponent implements OnInit {
         this.libros = data;
       });
   }
-  deleteLibro(id) {
+  deleteLibro(id, ind) {
     this.ls.deleteLibro(id).subscribe(res => {
-      this.libros.splice(id, 1);
+      this.libros.splice(ind, 1);
+
     });
   }
 }

@@ -6,6 +6,7 @@ const express = require('express'),
   config = require('./DB');
 
 const libroRoute = require('./routes/libro.route');
+const AuthorsRoute = require('./routes/author.route');
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DB, { useNewUrlParser: true, useUnifiedTopology: true, auto_reconnect: true  }).then(
   () => {console.log('Database is connected') },
@@ -16,6 +17,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/libros', libroRoute);
+app.use('/authors', AuthorsRoute);
 const port = process.env.PORT || 4000;
 
 const server = app.listen(port, function(){

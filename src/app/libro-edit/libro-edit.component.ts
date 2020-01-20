@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LibrosService} from '../libros.service';
+import Author from '../Author';
+import {AuthorsService} from '../authors.service';
 
 @Component({
   selector: 'app-libro-edit',
@@ -12,8 +14,9 @@ export class LibroEditComponent implements OnInit {
 
   angForm: FormGroup;
   libro: any = {};
+  authors: Author[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private ls: LibrosService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private router: Router, private ls: LibrosService, private fb: FormBuilder, private  as: AuthorsService) {
     this.createForm();
   }
 
@@ -22,7 +25,6 @@ export class LibroEditComponent implements OnInit {
       LibroName: ['', Validators.required ],
       LibroEditorial: ['', Validators.required ],
       LibroIdiom: ['', Validators.required ],
-      LibroAuthor: ['', Validators.required ],
       LibroDescription: ['', Validators.required ],
     });
   }
@@ -33,6 +35,11 @@ export class LibroEditComponent implements OnInit {
         this.libro = res;
       });
     });
+    this.as
+      .getAuthors()
+      .subscribe((data: Author[]) => {
+        this.authors = data;
+      });
   }
 
   updateLibro(LibroName, LibroEditorial, LibroIdiom, LibroAuthor, LibroDescription) {
